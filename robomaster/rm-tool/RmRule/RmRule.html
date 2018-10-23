@@ -15,7 +15,7 @@
     <div class="container">
       <div class="jumbotron">
 				<h1><center>RM2019战队内部规则评测</center></h1>
-        <small>本试题是从海量题库中随机抽取的100道题目，每道题均为单选题，满分一百分，点击提交后可以查看分数，但并不会给出具体错误选项。要求各位最后得分在95分以上。</small>
+        <small>本试题是从海量题库中随机抽取的50道题目，每道题均为单选题，每题两分，满分一百分，点击提交后可以查看分数，但并不会给出具体错误选项。要求各位最后得分在90分以上。</small>
 			</div>
       <div class="form-group">
         <label for="exampleInputEmail1">你的姓名：</label>
@@ -25,7 +25,7 @@
       <div  id="testContent">
       </div>
       <center><button type="submit" class="btn btn-primary" onclick="check()">提交</button></center><hr>
-      <div style="font-size:15px"><center>感谢东北林业大学、华北科技大学提供的评测试题！</center></div>
+      <div style="font-size:15px"><center>感谢各位学校提供的满分评测试题！</center></div>
     </div>
   </body>
   <script src="../../../js/jquery.min.js"></script>
@@ -34,7 +34,7 @@
   <script>
   var score = 0;
     $(function(){
-      var count = 100;
+      var count = 50;
        //原始数组
        var original = new Array; 
        //给原始数组original赋值
@@ -80,12 +80,12 @@
             //console.log(radios[i].value);
             if(radios[i].getAttribute("answer") == radios[i].value)
             {
-              score ++;
+              score += 2;
             }
           }
         }
       }
-      if(score >= 95)
+      if(score >= 90)
       {
         var myDate = new Date();
         var date = (myDate.getMonth()+1)+"-"+myDate.getDate()+"-"+myDate.getHours()+"-"+myDate.getMinutes();
