@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html style="overflow-x:hidden">
+  <head>
+    <meta charset = "utf-8">
+    <title>青年创客空间</title>
+    <meta http-equiv = "X-UA-Compatible" content = "IE=Edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name = "description" content = "哈尔滨工业大学（深圳）青年创客空间是一个以学生社团自运营为主、教师辅导为辅的高校创客空间，提供创意实践平台、创客咖啡交流、创新技术指导、创业孵化帮扶、创投资源整合等服务。同时还组织学生参加RoboMaster机甲大师赛。">
+    <meta name = "author" content = "Big_Uncle">
+    <meta name="keywords" content = "哈尔滨工业大学（深圳）,青年创客空间,青年创客俱乐部,南工骁鹰">
+    <link rel = "icon" href = "Qmaker.jpg">
+    <link rel = "stylesheet" href = "css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "css/video.css">
+    <style>
+      .outer{
+        width: 100%;
+        height: 100vh;
+        top:0;
+        left:0;
+        position:absolute;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .inner{
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .home{
+        max-width:400px;
+        height:auto;
+        padding:10px;
+        background:rgb(255,255,255);
+        opacity:0.9;
+      }
+      .home-content{
+        border:1px solid #404040;
+        padding:20px;
+        opacity:0.9;
+        text-align:center;
+      }
+      .bottomNav{
+        width:100%;
+        height:10vh;
+        position:absolute;
+        z-index:100;
+        left:0;
+        bottom:0;
+        background:rgb(255,255,255);
+        opacity:0.9;
+        text-align:center;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: background 1s;
+        -webkit-transition: background 1s;
+      }
+      .nav-link,toTop{
+        background:transparent;
+        font-family: "微软雅黑";
+        padding: 3vh 5vw 3vh 5vw;
+        line-height:60px;
+        font-size:1.2em;
+        font-weight:100;
+        text-decoration:none
+        color:black;
+      }
+      .nav-link:hover,toTop:hover{
+        color:green;
+        border:1px solid transparent;
+        border-bottom-width:5px;
+        border-bottom-color:green;
+        text-decoration:none
+      }
+      a:link{
+        text-decoration:none;
+        color:black;
+      }
+      a:visited{
+        text-decoration:none;
+        color:black;
+      }
+      a:hover{
+        text-decoration:none;
+        color:green;
+      }
+      a:active{
+        text-decoration:none;
+      }
+      .toTop{
+        right:10px;
+        display:none;
+        width:50px;
+        height:50px;
+        bottom:50%;
+        position:fixed;
+        z-index:99;
+      }
+      .intro{
+        padding-left:10vw;
+        padding-right:10vw;
+      }
+      p{
+        text-indent:2em;
+        font-size:20px;
+        font-family:"微软雅黑";
+        font-weight:100;
+      }
+      @media (max-width:900px){
+        p{
+          font-size:15px;
+        }
+      }
+      .leftNav li{
+        padding:5px;
+      }
+      .leftNav li.active{
+        border:1px solid transparent;
+        border-right-width:5px;
+        border-right-color:green;
+      }
+      footer{
+        height:28vh
+      }
+      @media (max-width:768px){
+        footer{
+          height:15vh
+        }
+      }
+    </style>
+  </head>
+  <body style="padding-top:10vh" data-spy="scroll" data-target="#leftNav">
+    <div id="myCarousel" class="carousel slide" style="width:100%;margin-top:-10vh">
+      <div class="carousel-inner">
+        <div class="item active" style="width:100%;height:100vh;background:url('imgs/1.jpg') no-repeat center top;background-size:auto 100vh;">
+        </div>
+        <div class="item" style="width:100%;height:100vh;background:url('imgs/2.png') no-repeat center top;background-size:auto 100vh;">
+        </div>
+      </div>
+    </div>
+    <div style="width:100%;height:100vh;position:absolute;top:-10vh;background-color:gray;z-index:-1"></div>
+    <div class="outer" id="top">
+      <div class="inner">
+        <div class="home">
+          <div class="home-content">
+            <h1>青年创客空间</h1>
+            <h3>你没有过的全新体验</h3>
+          </div>
+        </div>
+      </div>
+      <div id="bottomNav" class="bottomNav">
+        <div>
+          <a id="turnToIntro" href="#introduction" class="nav-link turnTo">空间介绍</a>
+          <a href="activity.html" class="nav-link">活动</a>
+          <a href="robomaster.html" class="nav-link">RoboMaster</a>
+        </div>
+      </div>
+    </div>
+    <div id="toTop" class="toTop"><a href="#top" class="turnTo" style="font-size:50px"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span></p></a></div>
+    <div id="introduction" style="min-height:100vh;width:100%">
+      <div class="col-md-2 hidden-sm hidden-xs">
+        <div class="leftNav" id="leftNav" data-offset-top="10vh">
+          <ul class="nav" style="float:right;list-style:none">
+            <li class="active"><a class="nav-left turnTo" href="#1">概况</a></li>
+            <li><a class="nav-left turnTo" href="#2">现有规模</a></li>
+            <li><a class="nav-left turnTo" href="#3">荣誉</a></li>
+            <li><a class="nav-left turnTo" href="#4">空间结构</a></li>
+            <li><a class="nav-left turnTo" href="#5">未来</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="intro">
+          <h1 id="1">概况</h1><hr>
+          <p>作为深圳最具影响力和特色的高校创客空间，哈工大(深圳)“青年创客空间”创办于2014年1月，采取以学生社团自运营为主、教师辅导为辅的新型创新运作模式，提供创意实践平台、创客咖啡交流、创新技术指导、创业孵化帮扶、创投资源整合等服务，下设青年创客俱乐部、HIT创客咖啡、机器人剧场、创客实验室等机构，先后组织开展了科技学术节、深圳市3D打印大赛、学生科技创新立项、全球创客马拉松等20余项大型创客活动。</p>
+          <p>每年，“青年创客空间”都会开展“公开答辩路演”活动，邀请资深教授、知名企业家对创客项目进行评审，筛选产生50余项创客项目，进行资助。自创办以来，哈工大(深圳)“青年创客空间”率获佳绩。2015年6月，“青年创客空间”荣获共青团深圳市委员会颁发的“鲲鹏汇青年创新创业服务机构”称号；9月，荣获深圳市科创委“创客”专项资金“创客”空间(第一批)项目200万经费支持，为深圳市首批21家单位中唯一的高校。“青年创客空间”的学生团队曾荣获首届全国航天“创客”大赛二等奖，并连续3年在“深港ICT青年创业计划”中获得10万港币资助。在2015年深圳市“创客”专项资金的个人“创客”项目申报中，全市共44个项目获资助，其中哈工大(深圳)23项学生项目获批，共获资助150万元，占全市获资助项目的52%。</p>
+          <h1 id="2">介绍视频</h1><hr>
+          <center>
+            <div class="video-btn" id="video-btn">
+              <div class="video-area" id="video-area">
+              <iframe src="https://player.bilibili.com/player.html?aid=30827013&cid=53823939&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+              </div>
+            </div>
+          </center>
+          <h1 id="3">荣誉</h1><hr>
+          <p>1、2015年6月，“青年创客空间”荣获共青团深圳市委员会颁发的“鲲鹏汇青年创新创业服务机构”称号。</p>
+          <p>2、2015年9月，荣获深圳市科创委“创客”专项资金“创客”空间（第一批）项目200万经费支持，为深圳市首批21家单位中唯一的高校。</p>
+          <p>3、“青年创客空间”的学生团队曾荣获首届全国航天“创客”大赛二等奖，并连续3年在“深港ICT青年创业计划”中获得10万港币资助。</p>
+          <p>4、在2015年深圳市“创客”专项资金的个人“创客”项目申报中，全市共44个项目获资助，其中哈工大（深圳）23项学生项目获批，共获资助150万元，占全市获资助项目的52%。</p>
+          <p>5、2016年3月，空间荣获“中华人民共和国科学技术部众创空间”称号，和柴火创客空间、中科创客学院等知名众创空间被同批次纳入国家级科技企业孵化器管理服务体系，成为深圳第一家获此资质认证的高校。</p>
+          <p>6、2017年5月，空间下属的“南工骁鹰”战队获RoboMaster 2017机甲大师赛东部赛区三等奖。</p>
+          <p>7、2018年5月，空间下属的“南工骁鹰”战队获RoboMaster 2018机甲大师赛南部赛区三等奖。</p>
+          <p>8、2018年5月，空间下属的“Critic HIT”战队获2018 ICRA人工智能挑战赛全球亚军，与哈尔滨工业大学“IHiter”战队一起包揽该项赛事全球冠亚军。</p>
+          <h1 id="4">空间结构</h1><hr>
+          <p>2014年1月我校成立“青年创客空间”，聚焦在校学生的创新创业能力的培养，以“五创联动”的运营服务理念为核心，为学生提供从创新到创业的全流程服务，全面提高学生的协同创新能力和视野品味。根据五创联动服务理念，青年创客空间目前分为五大板块：青年创客俱乐部、青年创新讲堂、青年创客咖啡、青年创业苗圃和青年创客实验室。</p>
+          <p>青年创客俱乐部为创意实践平台，它也是学校学术科技类社团的主体，针对入门者进行创客入门指引，每年组织举办校内科技学术节、创客马拉松、挑战杯和科技工作坊，积极调动学生的积极性，号召学生发挥自己的创造力，通过竞赛的形式激起学生的兴趣。</p>
+          <center><img class="img-responsive" src="imgs/structure.png"><text style="font-size:12px;color:gray">青年创客俱乐部组织框架图</text></center>
+          <p>青年创客俱乐部下设培训部、项目部和综合部，另有一个相对独立的机器人比赛战队。内部成员既有研究生也有本科生。科技工作坊从木工、3D打印、单片机、VR等方面让学生体验学习。综合部通过学校官网以及社团公众号、线下沙龙等方式进行宣传。</p>
+          <p>青年创新讲堂邀请校外企业技术人才开设专业课程，为学生讲解专业知识，并且实行校企联合培训认证，在课程结束之后对学员进行考核，合格者颁发由学校和企业联合认证的证书。</p>
+          <p>青年创客咖啡定期举办技术沙龙和校友聚会交流。大家坐在一起定主题或无主题地非正式交流，相互阐述想法，实现思想的碰撞和情感的交流。</p>
+          <p>青年创业苗圃进行创业孵化帮扶，在全校范围内征集立项创业意愿，然后进行青年创业项目路演，邀请知名企业投资人对进行项目筛选与评比，对优秀的项目给予一定的资金支持和技术指导。一般在资金的发放方面先发放50%，中期答辩通过合格后再发放剩下的50%资金，最后进行终期答辩。</p>
+          <h1 id="5">未来</h1><hr>
+          <p>未来我们要把学生推向了更大的舞台。我们将在原有平台基础上将重点提升2025青年创客实验室、深圳青年创业苗圃等双创服务平台建设，积极响应国家“中国制造2025”战略，依托哈工大优势学科和科研成果、大学人才库、优秀校友及企业资源，通过与深圳知名企业孵化器的深度合作，探索“双创+智能制造+校企合作”创新培养模式，在无人机、感知计算、3D打印等多个热门领域深入贯彻“五创联动服务理念”，为学生打造一流的双创服务平台。</p>
+        </div>
+      </div>
+      <text>.</text>
+      <center>
+        <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+      </center>
+      <footer style="background-color:rgb(175,238,238);">
+        <div style="width:100%;padding-top:1.5vh;"><center>
+          <img style="display:inline;height:12vh" src="imgs/qmaker.png">
+          <img style="display:inline;height:12vh" src="imgs/QR code.jpg"></center>
+        </div>
+        <div class="hidden-xs"><center>
+          <hr>
+          <text>地址：深圳市南山区西丽大学城哈工大校区A栋&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编：518055</text><br><text>网站版权所有 © 哈尔滨工业大学（深圳）青年创客俱乐部<text>
+          <br>
+          <text>联系人：王道川&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：wangdaochuan@hitszqmaker.club&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：Big Uncle</text>
+        </center></div>
+      </footer>
+    </div>
+    
+    <script src = "js/jquery.min.js"></script>
+    <script src = "js/bootstrap.min.js"></script>
+    <script src = "js/pace/pace.min.js"></script>
+    <script src = "js/three/three.min.js"></script>
+    <script src = "js/three/three-waves.min.js"></script>
+    <script src="js/count.js"></script>
+    <script>
+      $("#myCarousel").carousel({interval:2000});
+      $('.turnTo').click(function(e) {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          //console.log(target);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top - 0.1*document.documentElement.clientHeight
+            }, 500);
+            return false;
+          }
+        }
+      });
+      window.onscroll = function(){
+        if($(document).scrollTop() >= 0.9*document.documentElement.clientHeight){
+          document.getElementById("bottomNav").style.position = "fixed";
+          document.getElementById("bottomNav").style.top = 0;
+          document.getElementById("bottomNav").style.bottom = "";
+          document.getElementById("bottomNav").style.background = "rgb(175,238,238)";
+          document.getElementById("bottomNav").style.opacity = 1;
+          document.getElementById("leftNav").style.position = "fixed";
+          document.getElementById("leftNav").style.top = "10vh";
+          document.getElementById("leftNav").style.right = "83.3vw"
+          document.getElementById("toTop").style.display = "block";
+        }else{
+          document.getElementById("bottomNav").style.position = "absolute";
+          document.getElementById("bottomNav").style.top = "";
+          document.getElementById("bottomNav").style.bottom = 0;
+          document.getElementById("bottomNav").style.background = "rgb(255,255,255)";
+          document.getElementById("bottomNav").style.opacity = 0.9;
+          document.getElementById("leftNav").style.position = "";
+          document.getElementById("leftNav").style.top = "";
+          document.getElementById("leftNav").style.right = "";
+          document.getElementById("toTop").style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

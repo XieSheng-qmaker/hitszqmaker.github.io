@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html style="overflow-x:hidden">
+  <head>
+    <meta charset = "utf-8">
+    <title>文章发布</title>
+    <meta http-equiv = "X-UA-Compatible" content = "IE=Edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name = "author" content = "Big_Uncle">
+    <link rel = "icon" href = "Qmaker.jpg">
+    <link rel = "stylesheet" href = "css/bootstrap.min.css">
+    <style>
+      .input-group{
+        margin:5px;
+      }
+      body{
+        margin-bottom:40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">文章发表</h1>
+          <p>青年创客俱乐部专用文章发表工具。因为个别原因官网没有后台，此页面编辑结束后会生成一个html文件并下载该文件，请按照相关网站维护手册将该文件放在相应的位置。</p>
+          <p>遇bug请联系谢师傅：biguncle@hitszqmaker.club</p>
+        </div>
+      </div>
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">文章标题</span>
+        <input type="text" class="form-control" id="title">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">作者</span>
+        <input type="text" class="form-control" id="author">
+      </div>
+      <hr>
+      <div id="article_content">
+      </div>
+      <div class="btn-group dropup">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          添加内容<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="javascript:;" onclick="addTitle()">分标题</a></li>
+          <li><a href="javascript:;" onclick="addContent()">正文</a></li>
+          <li><a href="javascript:;" onclick="addPicture()">图片</a></li>
+          <!--<li role="separator" class="divider"></li>-->
+          <li><a href="javascript:;" onclick="addLink()">超链接</a></li>
+          <li><a href="javascript:;" onclick="addVideo()">视频<small>(暂时只支持腾讯视频和B站视频)</small></a></li>
+        </ul>
+      </div>
+      <hr>
+      <a class="btn btn-default" href="javascript:;" role="button" onclick="Submit()">提交生成</a>
+    </div>
+  </body>
+  <script src = "js/jquery.min.js"></script>
+  <script src = "js/bootstrap.min.js"></script>
+  <script src = "js/autosize.js"></script>
+  <script src = "js/create.article.js"></script>
+</html>

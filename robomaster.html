@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html style="overflow-x:hidden">
+  <head>
+    <meta charset = "utf-8">
+    <title>南工骁鹰</title>
+    <meta http-equiv = "X-UA-Compatible" content = "IE=Edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name = "description" content = "南工骁鹰(Critical HIT)战队，成立于2016年11月，隶属于哈尔滨工业大学（深圳）青年创客空间。">
+    <meta name = "author" content = "Big_Uncle">
+    <meta name="keywords" content = "哈尔滨工业大学（深圳）,青年创客空间,青年创客俱乐部,南工骁鹰">
+    <link rel = "icon" href = "robomaster.jpg">
+    <link rel = "stylesheet" href = "css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "css/video.css"> 
+    <style>
+      .outer{
+        width: 100%;
+        height: 100vh;
+        top:0;
+        left:0;
+        position:absolute;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .inner{
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .bottomNav{
+        width:100%;
+        height:10vh;
+        position:absolute;
+        z-index:100;
+        left:0;
+        bottom:0;
+        background:rgb(255,255,255);
+        opacity:0.9;
+        text-align:center;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: background 1s;
+        -webkit-transition: background 1s;
+      }
+      .nav-link,toTop{
+        background:transparent;
+        font-family: "微软雅黑";
+        padding: 3vh 5vw 3vh 5vw;
+        line-height:60px;
+        font-size:1.2em;
+        font-weight:100;
+        text-decoration:none
+        color:black;
+      }
+      .nav-link:hover,toTop:hover{
+        color:green;
+        border:1px solid transparent;
+        border-bottom-width:5px;
+        border-bottom-color:green;
+        text-decoration:none
+      }
+      .bottomNav a:link{
+        text-decoration:none;
+        color:black;
+      }
+      .bottomNav a:visited{
+        text-decoration:none;
+        color:black;
+      }
+      .bottomNav a:hover{
+        text-decoration:none;
+        color:green;
+      }
+      .bottomNav a:active{
+        text-decoration:none;
+      }
+      .leftNav a:link{
+        text-decoration:none;
+        color:black;
+      }
+      .leftNav a:visited{
+        text-decoration:none;
+        color:black;
+      }
+      .leftNav a:hover{
+        text-decoration:none;
+        color:green;
+      }
+      .leftNav a:active{
+        text-decoration:none;
+      }
+      .toTop{
+        right:10px;
+        display:none;
+        width:50px;
+        height:50px;
+        bottom:50%;
+        position:fixed;
+        z-index:99;
+      }
+      .intro{
+        padding-left:10vw;
+        padding-right:10vw;
+      }
+      p{
+        text-indent:2em;
+        font-size:20px;
+        font-family:"微软雅黑";
+        font-weight:100;
+      }
+      @media (max-width:900px){
+        p{
+          font-size:15px;
+        }
+      }
+      .leftNav li{
+        padding:5px;
+      }
+      .leftNav li.active{
+        border:1px solid transparent;
+        border-right-width:5px;
+        border-right-color:green;
+      }
+      footer{
+        height:28vh
+      }
+      @media (max-width:768px){
+        footer{
+          height:15vh
+        }
+      }
+    </style>
+  </head>
+  <body style="padding-top:10vh" data-spy="scroll" data-target="#leftNav">
+    <div style="width:100%;height:100vh;margin-top:-10vh;background:url(background.jpg) no-repeat center top;"></div>
+    <div class="outer" id="top">
+      <div class="inner">
+        <img src="rm-logo.png" class="img-responsive" style="width: 433px;margin-bottom:12vh">
+      </div>
+      <div id="bottomNav" class="bottomNav">
+        <div>
+          <a id="turnToIntro" href="#introduction" class="nav-link turnTo">比赛详情</a>
+          <a href="./" class="nav-link">创客空间</a>
+          <a href="robomaster/rm-download.html" target="_blank" class="nav-link">资料下载</a>
+        </div>
+      </div>
+    </div>
+    <div id="toTop" class="toTop"><a href="#top" class="turnTo" style="font-size:50px"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span></p></a></div>
+    <div id="introduction" style="min-height:100vh;width:100%">
+      <div class="col-md-2 hidden-sm hidden-xs">
+        <div class="leftNav" id="leftNav" data-offset-top="10vh">
+          <ul class="nav" style="float:right;list-style:none">
+            <li class="active"><a class="nav-left turnTo" href="#1">关于大赛</a></li>
+            <li><a class="nav-left turnTo" href="#2">赛事设置</a></li>
+            <li><a class="nav-left turnTo" href="#3">宣传视频</a></li>
+            <li><a class="nav-left turnTo" href="#4">成员架构</a></li>
+            <li><a class="nav-left turnTo" href="#5">相关链接</a></li>
+            <li><a class="nav-left turnTo" href="#6">联系方式</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="intro">
+          <h1 id="1">关于大赛</h1><hr>
+          <p>RoboMaster机器人大赛，是一个为全世界青年工程师打造的机器人竞技平台。自办赛以来，始终坚持“让思维沸腾起来，让智慧行动起来”的宗旨，在推动广大高校学生参与科技创新实践、培养工程实践能力、提高团队协作水平、培育创新创业精神方面发挥了积极作用，为社会培养出众多爱创新、会动手、能协作、勇拼搏的科技精英人才。</p>
+          <h1 id="2">赛事设置</h1><hr>
+          <p>比赛要求参赛队员走出课堂，组成机甲战队，独立研发制作多种机器人参与团队竞技。他们将通过大赛获得宝贵的实践技能和战略思维，将理论与实践相结合，在激烈的竞争中打造先进的智能机器人。</p>
+          <h1 id="3">宣传视频</h1><hr>
+          <center>
+            <div class="video-btn" id="video-btn">
+              <div class="video-area" id="video-area">
+              <iframe src="https://www.djivideos.com/video_play/2e3aac77-b672-4f14-89a0-fa7f16afce29?autoplay=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+              </div>
+            </div>
+          </center>
+          <h1 id="4">成员架构</h1><hr>
+          <center><img class="img-responsive" src="member.png"></center>
+          <h1 id="5">相关链接</h1><hr>
+          <p>RoboMaster官网：<a href="http://www.robomaster.com" target="_blank">www.robomaster.com</a></p>
+          <p>RoboMaster论坛：<a href="http://bbs.robomaster.com" target="_blank">bbs.robomaster.com</a></p>
+          <h1 id="6">联系方式</h1><hr>
+          <p>有关战队的更详细信息咨询请联系谢同学。</p>
+          <p>E-mail：biguncle@hitszqmaker.club</p>
+        </div>
+      </div>
+      <text>.</text>
+      <footer style="background-color:rgb(175,238,238);">
+        <div style="width:100%;padding-top:1.5vh;"><center>
+          <img style="display:inline;height:12vh" src="imgs/qmaker.png">
+          <img style="display:inline;height:12vh" src="imgs/QR code.jpg"></center>
+        </div>
+        <div class="hidden-xs"><center>
+          <hr>
+          <text>地址：深圳市南山区西丽大学城哈工大校区A栋&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编：518055</text><br><text>网站版权所有 © 哈尔滨工业大学（深圳）青年创客俱乐部<text>
+          <br>
+          <text>联系人：王道川&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：wangdaochuan@hitszqmaker.club&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：Big Uncle</text>
+        </center></div>
+      </footer>
+    </div>
+    <script src = "js/jquery.min.js"></script>
+    <script src = "js/bootstrap.min.js"></script>
+    <script src = "js/pace/pace.min.js"></script>
+    <script src = "js/three/three.min.js"></script>
+    <script src = "js/three/three-waves.min.js"></script>
+    <script src="js/count.js"></script>
+    <script>
+      $("#myCarousel").carousel({interval:2000});
+      $('.turnTo').click(function(e) {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          //console.log(target);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top - 0.1*document.documentElement.clientHeight
+            }, 500);
+            return false;
+          }
+        }
+      });
+      window.onscroll = function(){
+        if($(document).scrollTop() >= 0.9*document.documentElement.clientHeight){
+          document.getElementById("bottomNav").style.position = "fixed";
+          document.getElementById("bottomNav").style.top = 0;
+          document.getElementById("bottomNav").style.bottom = "";
+          document.getElementById("bottomNav").style.background = "rgb(175,238,238)";
+          document.getElementById("bottomNav").style.opacity = 1;
+          document.getElementById("leftNav").style.position = "fixed";
+          document.getElementById("leftNav").style.top = "10vh";
+          document.getElementById("leftNav").style.right = "83.3vw"
+          document.getElementById("toTop").style.display = "block";
+        }else{
+          document.getElementById("bottomNav").style.position = "absolute";
+          document.getElementById("bottomNav").style.top = "";
+          document.getElementById("bottomNav").style.bottom = 0;
+          document.getElementById("bottomNav").style.background = "rgb(255,255,255)";
+          document.getElementById("bottomNav").style.opacity = 0.9;
+          document.getElementById("leftNav").style.position = "";
+          document.getElementById("leftNav").style.top = "";
+          document.getElementById("leftNav").style.right = "";
+          document.getElementById("toTop").style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

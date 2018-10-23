@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html style="overflow-x:hidden">
+  <head>
+    <meta charset = "utf-8">
+    <title>青年创客空间|活动</title>
+    <meta http-equiv = "X-UA-Compatible" content = "IE=Edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name = "description" content = "哈尔滨工业大学（深圳）青年创客俱乐部，采用bootstrap框架搭建而成">
+    <meta name = "author" content = "Big_Uncle">
+    <meta name="keywords" content = "哈尔滨工业大学（深圳）,青年创客空间,青年创客俱乐部">
+    <link rel = "icon" href = "Qmaker.jpg">
+    <link rel = "stylesheet" href = "css/bootstrap.min.css">
+    <style>
+      .outer{
+        width: 100%;
+        height: 100vh;
+        top:0;
+        left:0;
+        position:absolute;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .inner{
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .home{
+        max-width:400px;
+        height:auto;
+        padding:10px;
+        background:rgb(255,255,255);
+        opacity:0.9;
+      }
+      .home-content{
+        border:1px solid #404040;
+        padding:20px;
+        opacity:0.9;
+        text-align:center;
+      }
+      .bottomNav{
+        width:100%;
+        height:10vh;
+        position:absolute;
+        z-index:100;
+        left:0;
+        bottom:60vh;
+        background:rgb(255,255,255);
+        opacity:0.9;
+        text-align:center;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: background 1s;
+        -webkit-transition: background 1s;
+      }
+      .nav-link,toTop{
+        background:transparent;
+        font-family: "微软雅黑";
+        padding: 3vh 5vw 3vh 5vw;
+        line-height:60px;
+        font-size:1.2em;
+        font-weight:100;
+        text-decoration:none
+        color:black;
+      }
+      .nav-link:hover,toTop:hover,.self{
+        color:green;
+        border:1px solid transparent;
+        border-bottom-width:5px;
+        border-bottom-color:green;
+        text-decoration:none
+      }
+      a:link{
+        text-decoration:none;
+        color:black;
+      }
+      a:visited{
+        text-decoration:none;
+        color:black;
+      }
+      a:hover{
+        text-decoration:none;
+        color:green;
+      }
+      a:active{
+        text-decoration:none;
+      }
+      .toTop{
+        right:10px;
+        display:none;
+        width:50px;
+        height:50px;
+        bottom:50%;
+        position:fixed;
+        z-index:99;
+      }
+      .article{
+        display:none;
+        background-color:#ffffff;
+        margin-left:20vw;
+        margin-right:20vw;
+        margin-top:10px;
+        margin-bottom:10px;
+        padding-left:60px;
+        padding-right:60px;
+        padding-top:30px;
+        padding-bottom:30px;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+      }
+      @media (max-width: 767px){
+        .article{
+          padding:12px;
+          margin-left:1px;
+          margin-right:1px;
+        }
+      }
+      @media (max-width: 991px) and (min-width: 768px){
+        .article{
+          padding:20px;
+          margin:5px;
+          margin-left:10vw;
+          margin-right:10vw;
+        }
+      }
+      .post-meta{
+        height:24px;
+        font-size:12px;
+        margin:0.5em;
+        color:gray;
+      }
+      .post-body{
+        font-size:14px;
+      }
+      p{
+        margin-top:20px;
+        font-size:18px;
+        font-weight:100;
+        text-indent:2em;
+      }
+      .post-title{
+        padding-top:10px;
+        font-weight:bold;
+        line-height:1.5;
+        font-size:22px;
+      }
+      .post-button{
+        margin-top: 40px;
+        text-align:center;
+      }
+      .abutton{
+        display: inline-block;
+        padding: 0 20px;
+        font-size: 14px;
+        color: #555;
+        background: #fff;
+        border: 2px solid #555;
+        text-decoration: none;
+        border-radius: 2px;
+        transition-property: background-color;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0s;
+        line-height: 2;
+        transition: background 0.5s;
+        -webkit-transition: background 0.5s;
+      }
+      .abutton:hover{
+        background:black;
+        color:white;
+      }
+    </style>
+  </head>
+  <body style="padding-top:10vh;background-color:rgb(232,232,232)">
+    <div id="myCarousel" class="carousel slide" style="width:100%;margin-top:-10vh">
+      <div class="carousel-inner">
+        <div class="item active" style="width:100%;height:40vh;background:url('imgs/1.jpg');background-size:auto 100vh;">
+        </div>
+        <div class="item" style="width:100%;height:40vh;background:url('imgs/2.jpg');background-size:auto 100vh;">
+        </div>
+      </div>
+    </div>
+    <div id="top">
+      <div id="bottomNav" class="bottomNav">
+        <div>
+          <a id="turnToIntro" href="./" class="nav-link">空间介绍</a>
+          <a href="activity.html" class="nav-link self">活动</a>
+          <a href="robomaster.html" class="nav-link">RoboMaster</a>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <center><div class="input-group" style="width:500px">
+      <input type="text" class="form-control" id="search" placeholder="站内搜索">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="search()">Go!</button>
+      </span>
+    </div></center>
+    <div id="toTop" class="toTop"><a href="#top" class="turnTo" style="font-size:50px"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span></p></a></div>
+    <div id="introduction">
+      <div class="intro">
+        <!--把生成的文章简介代码添加到这里-->
+        <div id="1" class="article">            <header style="text-align:center">              <h1 style="font-size:1.7em">哈工大学子包揽ICRA 2018 DJI RoboMaster 人工智能挑战赛冠亚军</h1>        <div class="post-meta">          <span class="glyphicon glyphicon-time"></span><span>发表时间：2018-9-18&nbsp;|&nbsp;</span><span class="glyphicon glyphicon-user"></span><span>作者：王道川</span>              </div></header><div class="post-body"><p>5月21日-5月24日，ICRA 2018 DJI RoboMaster人工智能挑战赛在澳大利亚布里斯班会展中心举行。</p><p>校区参赛的Critical HIT团队由校区青年创客俱乐部联合千人计划刘云辉、孟庆虎教授实验室共同组队，机电工程与自动化学院李兵、徐文福教授实验室支持，成员由2016级机械电子工程专业硕士韩文华、2017级控制工程专业硕士王道川、2017级机械电子专业硕士王舜垚等12名研究生组成。Critical HIT团队以强硬的进攻策略和出色的发挥，即便在比赛第一天遭遇了比赛现场wifi信号不稳、两台机器人之间无法沟通的突发状况，依然成功击毙官方机器人，获得了当天的全场最高分。然而第二场比赛中，由于未连接裁判系统服务器的失误，机器人启动并不成功，对官方机器人的进攻未采取有效的规避措施，导致腹背受敌。面对这些意料之外的状况，Critical HIT团队及时发现并解决了问题，在当天的第三场比赛中，打出了22秒团灭官方机器人的全场最高纪录，并在第三天的最后一场比赛中，获得了6220的高分。经过3天的激烈比赛，哈尔滨工业大学I Hiter机器人创新团队获大赛冠军，校区Critical Hit机器人创新团队获大赛亚军。</p><div class="post-button">                <a href="activity/2018/9/18/article1.html" class="abutton">阅读全文&nbsp;»</a>              </div></div></div>
+        <div style="padding:20px;text-align:center">
+          <ul class="pagination" id="pages">
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src = "js/jquery.min.js"></script>
+    <script src = "js/bootstrap.min.js"></script>
+    <script src = "js/pace/pace.min.js"></script>
+    <script src = "js/three/three.min.js"></script>
+    <script src = "js/three/three-waves.min.js"></script>
+    <script src = "js/turnToPage.js"></script>
+    <script src = "js/search.js"></script>
+    <script src="js/count.js"></script>
+    <script>
+      var num = 1;
+      dividePage(num);
+      $("#myCarousel").carousel({interval:2000});
+      $('.turnTo').click(function(e) {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          //console.log(target);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top - 0.1*document.documentElement.clientHeight
+            }, 500);
+            return false;
+          }
+        }
+      });
+      window.onscroll = function(){
+        if($(document).scrollTop() >= 0.3*document.documentElement.clientHeight){
+          document.getElementById("bottomNav").style.position = "fixed";
+          document.getElementById("bottomNav").style.top = 0;
+          document.getElementById("bottomNav").style.bottom = "";
+          document.getElementById("bottomNav").style.background = "rgb(175,238,238)";
+          document.getElementById("bottomNav").style.opacity = 1;
+          document.getElementById("toTop").style.display = "block";
+        }else{
+          document.getElementById("bottomNav").style.position = "absolute";
+          document.getElementById("bottomNav").style.top = "";
+          document.getElementById("bottomNav").style.bottom = 0.6*document.documentElement.clientHeight;
+          document.getElementById("bottomNav").style.background = "rgb(255,255,255)";
+          document.getElementById("bottomNav").style.opacity = 0.9;
+          document.getElementById("toTop").style.display = "none";
+        }
+      };
+      var keyword = $_GET['keyword'];
+      keyword = decodeURI(keyword);
+      if(keyword != undefined){
+        for(i=1; i<=num; i++){
+          var result = $("#"+i).textSearch(keyword,{id:i});
+        }
+      }
+      
+      function search(){
+        var search = document.getElementById('search').value;
+        var url = window.document.location.href.toString();
+        var u = url.split("?");
+        var localHref = u[0];
+        window.location.href = (localHref+"?keyword="+search);
+      }
+    </script>
+  </body>
+</html>

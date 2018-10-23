@@ -1,0 +1,55 @@
+@media (max-width:768px){
+  #smchuncai{
+    width:120px;
+    height:120px;
+    font-size:8px;
+  }
+  #chat_top {width:100px;background:url("../imgs/chat_top.gif") no-repeat;background-size:100px 5px;}
+  #dialog_chat_loading {width:100px;}
+  #chat_bottom {width:100px;background:url("../imgs/chat_bottom.gif") no-repeat;background-size:100px 5px;}
+  #dialog_chat_contents {width:100px;}
+  #getmenu, #tempsaying,#chuncaisaying {padding:0px 0px 0px 2px; width:98px;}
+  #dialog_chat {width:100px;left:-105px}
+  #getmenu {width:20px;height:12px;margin:0;padding:0;cursor:pointer;background:url("../imgs/menu.jpg") no-repeat top right;background-size:20px 12px}
+  #addinput {width:120px;height:15px;position:absolute;top:75px;left:-125px;border:1px solid #888;background-color:#FFF;padding-top:2px;overflow:hidden;display:none;}
+  #inp_l {float:left;width:105px;height:10px;}
+  #inp_r {float:left;width:10px;height:10px;font-size:8px;text-align:center;cursor:pointer;}
+  #talk {border:none;float:left;width:90px;height:10px;}
+  #talkto {float:left;border:none;width:15px;height:10px;background:url("../imgs/ok.jpg");background-size:15px 10px;cursor:pointer;}
+}
+@media (min-width:769px){
+  #smchuncai{
+    width:240px;
+    height:240px;
+    font-size:12px;
+  }
+  #chat_top {width:200px;background:url("../imgs/chat_top.gif") no-repeat;background-size:200px 5px;}
+  #dialog_chat_loading {width:200px;}
+  #chat_bottom {width:200px;background:url("../imgs/chat_bottom.gif") no-repeat;background-size:200px 5px;}
+  #dialog_chat_contents {width:200px;}
+  #getmenu, #tempsaying,#chuncaisaying {padding:0px 0px 0px 2px; width:196px;}
+  #dialog_chat {width:200px;left:-205px}
+  #getmenu {width:30px;height:16px;margin:0;padding:0;cursor:pointer;background:url("../imgs/menu.jpg") no-repeat top right;background-size:30px 16px}
+  #addinput {width:240px;height:20px;position:absolute;top:150px;left:-260px;border:1px solid #888;background-color:#FFF;padding-top:2px;overflow:hidden;display:none;}
+  #inp_l {float:left;width:210px;height:20px;}
+  #inp_r {float:right;width:20px;height:20px;font-size:12px;text-align:center;cursor:pointer;}
+  #talk {border:none;float:left;width:170px;height:16px;}
+  #talkto {float:left;border:none;width:30px;height:16px;background:url("../imgs/ok.jpg");cursor:pointer;}
+}
+#smchuncai {opacity:0.75;position:fixed;}
+* html #smchuncai {position:absolute;}
+#chuncaiface {background-repeat:no-repeat;position:absolute;top:0px;left:0px;}
+/*#chuncaimenu {width:46px;line-height:16px;float:left;font-size:12px;cursor:pointer;background-color:#666;color:#FFF;text-align:center;}*/
+#showchuncaimenu {float:left;text-align:left;width:100%;overflow:hidden;display:none;}
+/*#showchuncaimenu ul, */#tempsaying ul {margin:1px 0px 0px 0px;padding:0px 0px 0px 5px;float:left;width:100%;line-height:16px;cursor:pointer;overflow:hidden;}
+.wcc_mlist {text-align:center;width:47%;float:left;line-height:16px;margin:0;padding:0px 0px 4px 0px;cursor:pointer;overflow:hidden;}
+#tempsaying ul {width:96%;}
+#callchuncai {position:fixed;width:60px;line-height:16px;cursor:pointer;display:none;font-size:12px;border:1px solid #e87a73;background-color:#FFF;}
+* html #callchuncai {position:absolute;}
+#dialog_chat {position:absolute;top:0px;line-height:23px;text-align:left;}
+#dialog_chat_loading {height:30px;background:url("../imgs/loading.gif") no-repeat center center;display:none;}
+#chat_top {float:left;height:5px;overflow:hidden;}
+#dialog_chat_contents, #chuncaisaying, #getmenu, #tempsaying {float:right;margin:0;padding-left:0px;line-height:23px;background-color:#ffffee;}
+#dialog_chat_contents {border-left:1px solid #e87a73;border-right:1px solid #e87a73;}
+#chat_bottom {height:10px;float:left;}
+#tempsaying, #hiddenfaces {display:none;}

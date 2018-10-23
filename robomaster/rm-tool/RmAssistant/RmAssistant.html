@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>RM比赛扣血机制</title>
+	<meta charset='utf-8'/>
+	<link rel="stylesheet" href="../../../css/bootstrap.min.css">
+	<script src="../../../js/jquery.min.js"></script>
+	<script src="../../../js/bootstrap.min.js"></script>
+	<script src="rm.js"></script>
+</head>
+<body>
+	<div class="container">
+		<center>
+			<div class="jumbotron">
+				<h1><center>2018RM比赛扣血机制</center></h1>
+			</div>
+			<div>
+				<button class="btn btn-info" onclick="infantry()">步兵车</button>
+				<button class="btn btn-info" onclick="centry()">哨兵车</button>
+				<button class="btn btn-info" onclick="hero()">英雄车</button>
+			</div>
+			<br/>
+			<table class="table table-striped table-bordered table-hover table-condensed">
+				<thead>
+					<tr>
+						<th>等级选择</th>
+						<th colspan="2">当前数据</th>
+						<th colspan="3">发射子弹</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan="2" id="button1"></td>
+						<td colspan="2">当前兵种：<text id="CurrentKind"></text></td>
+						<td rowspan="2">手动发射</td>
+						<td><input type="text" id="Speed1">m/s</td>
+						<td id="SmallBullet1"></td>
+					</tr>
+					<tr>
+						<td colspan="2">当前等级：<text id="CurrentLevel"></text></td>
+						<td><input type="text" id="Speed2">m/s</td>
+						<td id="BigBullet1"></td>
+					</tr>
+					<tr>
+						<td rowspan="4" id="button2"></td>
+						<td rowspan="2">热量上限</td>
+						<td>小弹丸：<text id="LimiteHeat"></text></td>
+						<td rowspan="7">
+							自动发射<hr>
+							小弹丸射速上限：<text id="LimiteSpeed"></text>m/s<br/>
+							大弹丸射速上限：<text id="LimiteSpeed1"></text>m/s
+						</td>
+						<td rowspan="2"><input type="text" id="Speed3">m/s</td>
+						<td rowspan="4" id="SmallBullet2"></td>
+					</tr>
+					<tr>
+						<td>大弹丸：<text id="LimiteHeat1"></text></td>
+					</tr>
+					<tr>
+						<td rowspan="2">每秒冷却值</td>
+						<td>小弹丸：<text id="CoolPerMi"></text></td>
+						<td><input type="text" id="frequency1">个/秒</td>
+					</tr>
+					<tr>
+						<td>大弹丸：<text id="CoolPerMi1"></text></td>
+						<td><input type="text" id="time1">（持续时间/秒）</td>
+					</tr>
+					<tr>
+						<td rowspan="3" id="button3"></td>
+						<td colspan="2">当前血量：<text id="CurrentBlood"></text></td>
+						<td><input type="text" id="Speed4">m/s</td>
+						<td rowspan="3" id="BigBullet2"></td>
+					</tr>
+					<tr>
+						<td rowspan="2">当前热量</td>
+						<td>小弹丸：<text id="CurrentHeat"></text></td>
+						<td><input type="text" id="frequency2">个/秒</td>
+					</tr>
+					<tr>
+						<td>大弹丸：<text id="CurrentHeat1"></text></td>
+						<td><input type="text" id="time2">（持续时间/秒）</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</div>
+	<!--此处为调试用内容：<text id="test"></text>-->
+</body>
+</html>
