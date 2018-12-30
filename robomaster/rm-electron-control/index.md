@@ -228,4 +228,290 @@ WWDG涉及到的函数只有喂狗的函数：
 HAL_WWDG_Refresh(WWDG_HandleTypeDef * hwwdg);  //重载窗口看门狗递减计数器（喂狗）
 ```
 WWDG一般都不会用到它的中断函数，所以我也没用过。
+#FreeRTOS
+在嵌入式领域中，嵌入式实时操作系统正得到越来越广泛的应用。采用嵌入式实时操作系统(RTOS)可以更合理、更有效地利用CPU的资源，简化应用软件的设计，缩短系统开发时间，更好地保证系统的实时性和可靠性。嵌入式操作系统有好几种，比如μC/OS-II、embOS、salvo、RTX，还有这里要说的FreeRTOS。
 
+FreeRTOS是一个迷你的实时操作系统内核。作为一个轻量级的操作系统，功能包括：任务管理、时间管理、信号量、消息队列、内存管理、记录功能、软件定时器、协程等，可基本满足较小系统的需要。
+
+我接触FreeRTOS时间不是很长，也没怎么去深入研究开发它的功能和用法，这里我使用的是由ST公司封装的**CMSIS-RTOS API**，这个API支持多种操作系统，而且使用方便。以下内容是从这篇[讲解FreeRTOS的博客](http://www.cnblogs.com/horal/p/7841148.html)里面摘取的，但是这篇博客里面的一些函数的用法已经不适用于最新版本的库，望读者注意。
+
+##线程
+操作系统与裸机的最大区别就是线程。在裸机系统中，除了while循环外，我们要在其他地方尽量避免死循环的存在，而在操作系统中，每一个线程都是一个死循环，FreeRTOS有一个强大的任务调度器，可以快速地切换各个任务并保存相应的上下文。
+
+进程实例：
+```c
+/* USER CODE BEGIN Header_StartDefaultTask */
+/**
+  * @brief  Function implementing the defaultTask thread.
+  * @param  argument: Not used 
+  * @retval None
+  */
+/* USER CODE END Header_StartDefaultTask */
+void StartDefaultTask(void const * argument)
+{
+
+  /* USER CODE BEGIN StartDefaultTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    
+		osDelay(1);
+  }
+  /* USER CODE END StartDefaultTask */
+}
+```
+线程与函数的最大区别在于，函数总归要返回到被调用处，而进程则是无限循环，不会主动结束。
+
+在FreeRTOS里面，线程有八个优先级：
+
+|CMSIS-RTOS Priority Levels |
+|:-------|
+|   osPriorityIdle  |
+| osPriorityLow|
+| osPriorityBelowNormal|
+| osPriorityNormal|
+| osPriorityAboveNormal|
+| osPriorityHigh|
+| osPriorityRealTime|
+| osPriorityError|
+上述优先级的从上到下依次增加*（其实从命名就能看出来）*，不同于裸机的定时器，在操作系统中线程的优先级可以是一样的，当两个线程的优先级是一样时，任务调度器会不断在这两个线程间来回切换，相当于两个线程同步执行，而且不用担心线程里面语句过多导致“超时”的情况。操作系统的优越性可见一斑。
+
+线程的定义和初始化均可以在STM32CubeMX中完成。线程的使用流程如下：
+```c
+osThreadId defaultTaskHandle;			//定义线程的ID，用于对线程的各种操作，比如修改优先级，中止、开始线程等
+void StartDefaultTask(void const * argument);		//线程对应的函数体的声明
+osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);		//线程定义，参数分别为：线程的名称，线程函数体，线程优先级，线程实例化个数，线程分配的栈空间
+defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);		//创建线程，并赋值给对应的线程ID
+
+/* 线程的具体实现 */
+void StartDefaultTask(void const * argument)
+{
+
+  /* USER CODE BEGIN StartDefaultTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    	//这里写用户逻辑
+		osDelay(1);
+  }
+  /* USER CODE END StartDefaultTask */
+}
+```
+上面代码是我直接复制的，也就是说用软件配置生成好代码之后，线程的声明，定义，创建都已经完成，我们只需要在线程的函数体里面实现自己的逻辑就行了，可以说是非常方便。
+##信号量
+光有线程有时候还不够，因为项目开发中线程往往不是相互独立的，需要不同的线程之间进行通信。在FreeRTOS中线程的通信可以使用信号量、队列、邮箱进行通信，这里只讲解最简单的信号量的使用，其他两种的使用可以参考[这篇博客](http://www.cnblogs.com/horal/p/7841148.html)。
+
+信号量可以实现一个线程在另一个线程完成后再进行，也可以实现两个线程真正同步运行，线程可以发出一个信号量，也可以等待一个信号量。想象这样一个场景，线程B的运行需要线程A的预先执行，也就是线程B必须在线程A执行过后才能执行，怎么办呢？我们可以在线程A的函数最后发送一个信号量，然后在线程B的最前面等待该信号量。当线程B没有等待到信号量的时候，该线程处于**挂起**状态，直到信号量的到达才转为准备状态。
+
+上述的流程的实现过程如下：
+```c
+osSemaphoreId RemoteSignalHandle;		//定义信号量的ID
+osSemaphoreDef(RemoteSignal);		//定义一个信号量，并命名为RemoteSignal
+RemoteSignalHandle = osSemaphoreCreate(osSemaphore(RemoteSignal), 1);	//创建一个信号量实例，并赋值给对应的ID
+
+/* 这里是一个线程，相关的线程定义步骤此处省略 */
+void RCReceive(void const * argument)
+{
+  /* Infinite loop */
+  for(;;)
+  {
+    osSemaphoreWait(RemoteSignalHandle, osWaitForever);		//等待信号量，等待时间为“永远”
+	Remote.receiveData(&Remote, rc_data);	//等待到信号量之后执行的语句
+  }
+  /* USER CODE END RCReceive */
+}
+
+/*
+ * 此示例代码使用中断函数发送信号量
+ * 这样的好处是将复杂的数据处理逻辑放在线程中，尽量减少中断里面的函数执行时间
+ */
+void HAL_UART_RxCpltCallback (UART_HandleTypeDef *huart)
+{
+	HAL_UART_Receive_DMA(&huart1, rc_data, 18u);		//再次使能串口接收
+	if(huart == &huart1)		//判断是否是由USART1触发的中断
+	{
+		osSemaphoreRelease(RemoteSignalHandle);		//发送信号量
+	}
+}
+```
+
+下面的代码可以实现两个线程同步进行：
+```c
+/* 线程1 */
+void Thead1(void const * argument)
+{
+	for(;;)
+	{
+		osSemaphoreRelease(Thead2_start);		//发送让线程2开始的信号量
+		osSemaphoreWait(Thead1_start, osWaitForever);		//等待线程2开始后发出的让线程1开始的信号量
+		Thead1_function();		//等待到线程2发送的信号量（即线程2开始执行后，执行线程1的逻辑，此时线程2的逻辑也同步开始）
+	}
+}
+
+/* 线程2 */
+void Thead2(void const * argument)
+{
+	for(;;)
+	{
+		osSemaphoreWait(Thead2_start, osWaitForever);		//等待线程1的信号量
+		osSemaphoreRelease(Thead1_start);		//发送让线程1开始的信号量
+		Thead2_function();		//线程2的具体逻辑
+	}
+}
+```
+##延时函数
+CMSIS-RTOS有自己的延时函数。大家应该还记得HAL的延时函数是`HAL_Delay(uint32_t time)`，该延时函数是基于**系统滴答定时器Systick**实现的，但是该定时器的中断优先级很低，甚至低于操作系统的优先级，所以在线程使用该延时函数会出问题。
+
+相信细心的朋友已经发现了，就在前面的代码中，有一个函数我没有讲过，没错，就是`osDelay(uint32_t time)`函数，这个函数能在线程中实现微秒级的延时。
+
+在讲解该延时函数的作用之前，先来看看操作系统的任务调度器是怎么调度任务的。在FreeRTOS中，每一个线程都有四种状态：**挂起**、**阻塞**、**就绪**和**运行**状态，每一种状态的特点从它的命名就可以猜出来。任务调度器在每一次切换任务的时候都会检查有没有优先级更高的线程处于就绪（ready）状态，如果有，则暂停当前执行的线程，转而执行优先级更高的线程。另外在FreeRTOS中，默认有一个空闲线程，它的优先级是最低的（osPriorityIdle），它是在没有任何一个用户的线程处于就绪或运行状态的时候运行。
+
+在程序执行到`osDelay(uint32_t time);`这条语句后，当前任务被挂起，任务调度器转而判断其他哪个线程得以执行，当时间到了之后线程变为就绪状态，等待任务调度器调用，被执行的线程为运行状态。
+
+##虚拟定时器
+虚拟定时器的功能相当于基本定时器，能实现最基本的定时执行一个回调函数，是通过软件实现的，所以叫做虚拟定时器，能实现毫秒级的定时执行。
+
+虚拟定时器的使用方法如下：
+```c
+osTimerId superviseTimerHandle;		//定义虚拟定时器的ID
+osTimerDef(superviseTimer, supervise);		//定义一个虚拟定时器，指定了定时器的回调函数是supervise()
+superviseTimerHandle = osTimerCreate(osTimer(superviseTimer), osTimerPeriodic, NULL);		//创建一个虚拟定时器实例，并指定了定时器模式为osTimerPeriodic模式（连续模式，还有一种模式是只执行一次的osTimerOnce）
+osTimerStart(superviseTimerHandle, 2);		//启动虚拟定时器，配置定时器2毫秒执行一次
+
+/* 虚拟定时器的回调函数 */
+void supervise(void const * argument)
+{
+  /* USER CODE BEGIN supervise */
+  //your code here...
+  /* USER CODE END supervise */
+}
+```
+要注意的是，虚拟定时器的回调函数和线程不一样，它不能有死循环，如果使用死循环当然没法实现定时执行啦。
+
+从上面的讲解中大家可以发现，CMSIS-RTOS的API调用格式也都差不多，多练几次就行，很容易掌握的。
+#CAN
+**CAN**是控制器局域网络(Controller Area Network, CAN)的简称，是由以研发和生产汽车电子产品著称的德国BOSCH公司开发的，并最终成为国际标准，是国际上应用最广泛的现场总线之一。
+
+CAN的设计初衷是为适应“减少线束的数量”、“通过多个LAN，进行大量数据的高速通信”的需要，所以CAN通信只需要两根线：CANH和CANL，不需要VCC或GND，设备通过改变CANH和CANL之间的电位差也实现逻辑0和逻辑1的传输。
+##硬件要求
+CAN通信需要硬件上配备一个专门的CAN收发器，还需要在总线两端各加入一个120Ω的电阻。这里提一下，经过本人的多次测试，虽然只有一个设备不能构成CAN总线，但是CAN外设的初始化也是可以顺利实现的，如果程序卡在了CAN的初始化处，那么80%是硬件层面出了问题，或者是引脚选错了。
+##CAN总线
+理论上，CAN总线上可以挂载无数个设备，但因为CAN总线只有两根线，同时只能传输一份数据，也就是只能半双工通信，设备数量多了之后传输效率就降低了，而且CAN总线的传输频率与传输距离成反比。目前CAN总线最高可支持1M的传输速率，汽车上使用的比较多的有500K和250K的高速CAN，与125K和62.5K的低速CAN。
+
+CAN总线上的每一个设备都有唯一的ID号，类似IIC的地址，但与IIC不同的是，CAN总线上没有主机和从机之分，每个设备都可以做主机，也都可以做从机。
+
+CAN只有两根线，简陋的硬件设备必然对应了复杂的通信协议以保证数据的完整传输。这里引用百度百科的解释：
+> CAN数据帧由远程帧、错误帧和超载帧组成。
+远程帧由6个场组成：帧起始、仲裁场、控制场、CRC场、应答场和帧结束。
+错误帧由两个不同场组成，第一个场由来自各站的错误标志叠加得到，第二个场是错误界定符。
+超载帧包括两个位场：超载标志和超载界定符。
+
+更多具体的通信协议就不写出来了，反正这些都由CAN收发器实现了，我们用户只需要享受它带来的便捷就完事了。
+
+CAN的初始化需要配置好CAN的总线传输速率，并配置CAN的过滤器。因为CAN通信是携带ID号的，总线上的每一个设备都会收到信息，设备根据信息里面带的ID号来判断是不是发给自己的信息，如果不是就忽略，这就是一个过滤的过程，用户配置过滤器可以实现接收某个或某些外设的消息，而忽略其他消息。
+
+##过滤器
+CAN的过滤器无法在软件里面配置，需要手动写函数，这里贴出一个接收所有消息的过滤器配置函数~~（其实自己不太会）~~：
+```c
+/**
+* @brief CAN外设过滤器初始化
+* @param can结构体
+* @retval None
+*/
+HAL_StatusTypeDef CanFilterInit(CAN_HandleTypeDef* hcan)
+{
+  CAN_FilterTypeDef  sFilterConfig;
+
+  sFilterConfig.FilterBank = 0;
+  sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+  sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+  sFilterConfig.FilterIdHigh = 0x0000;
+  sFilterConfig.FilterIdLow = 0x0000;
+  sFilterConfig.FilterMaskIdHigh = 0x0000;
+  sFilterConfig.FilterMaskIdLow = 0x0000;
+  sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
+  sFilterConfig.FilterActivation = ENABLE;
+  sFilterConfig.SlaveStartFilterBank = 14;
+  
+	if(hcan == &hcan1)
+	{
+		sFilterConfig.FilterBank = 0;
+	}
+	if(hcan == &hcan2)
+	{
+		sFilterConfig.FilterBank = 14;
+	}
+	
+  if(HAL_CAN_ConfigFilter(hcan, &sFilterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  if (HAL_CAN_Start(hcan) != HAL_OK)		//开启CAN
+  {
+    Error_Handler();
+  }
+	
+  if (HAL_CAN_ActivateNotification(hcan, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+	return HAL_OK;
+}
+```
+##使用步骤
+CAN通信有两个邮箱用于发送和接收，每个邮箱对应一个中断回调函数，一般都选择邮箱0，下面列出CAN的使用步骤：
+```c
+CanFilterInit(&hcan1);          //初始化CAN1过滤器
+
+/**
+ * @brief CAN通信接收中断回调函数
+ * @param CAN序号
+ * @retval None
+ */
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+{
+	CAN_RxHeaderTypeDef   RxHeader;
+	if(HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, CanReceiveData) != HAL_OK)
+  {
+    Error_Handler();            //如果CAN通信数据接收出错，则进入死循环
+  }
+  CanDataReceive(RxHeader.StdId);   //进行电机数据解析
+}
+```
+从代码中可以看出，初始化完成之后，只需要调用CAN的过滤器初始化函数即可使用CAN通信了。上面列出的是RX0对应的CAN接收中断函数`HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)`。
+
+CAN通信的发送函数如下*（此处以大疆的电机通信协议为例）*：
+```c
+/**
+* @brief ID为1~4的电机信号发送函数
+* @param ID为1~4的各个电机的电流数值
+* @retval None
+*/
+void CanTransmit_1234(CAN_HandleTypeDef *hcanx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3_iq, int16_t cm4_iq)
+{
+  CAN_TxHeaderTypeDef TxMessage;
+	
+	TxMessage.DLC=0x08;
+  TxMessage.StdId=0x200;
+  TxMessage.IDE=CAN_ID_STD;
+  TxMessage.RTR=CAN_RTR_DATA;
+  uint8_t TxData[8];
+	
+	TxData[0] = (uint8_t)(cm1_iq >> 8);
+	TxData[1] = (uint8_t)cm1_iq;
+	TxData[2] = (uint8_t)(cm2_iq >> 8);
+	TxData[3] = (uint8_t)cm2_iq;
+	TxData[4] = (uint8_t)(cm3_iq >> 8);
+	TxData[5] = (uint8_t)cm3_iq;
+	TxData[6] = (uint8_t)(cm4_iq >> 8);
+	TxData[7] = (uint8_t)cm4_iq; 
+
+	if(HAL_CAN_AddTxMessage(hcanx,&TxMessage,TxData,(uint32_t*)CAN_TX_MAILBOX0)!=HAL_OK)
+	{
+		 Error_Handler();       //如果CAN信息发送失败则进入死循环
+	}
+}
+```
+CAN通信真要理解清楚其实不容易，但是只学习怎么使用它的话，那是真的方便，用上就不想换了。

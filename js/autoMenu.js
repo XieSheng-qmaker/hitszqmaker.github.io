@@ -75,6 +75,10 @@
                         html += '<li><a href="#'+ _this.attr('id') +'">'+ nodetext +'</a></li>';
                     }
                 })
+                if(h2 == 1)
+                {
+                  html += '</ul></li>';
+                }
                 html += '</ul><a class="back-to-top" href="#top">'
               +'返回顶部'
             +'</a>';
