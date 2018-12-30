@@ -23,55 +23,20 @@
         </style>
     </head>
     <body>
-      <div class="bs-docs-header" id="content" tabindex="-1">
+      <div class="bs-docs-header" tabindex="-1">
         <div class="container">
-          <h1>哈深RM & RC电控</h1>
+          <h1 id="title">哈深RM & RC电控</h1>
           <p>——By 谢胜</p>
         </div>
       </div>
-      <div class="container">
+      <div class="container" id="content">
         <div class="col-md-9" role = "main">
             <div id="test-editormd-view"></div>
         </div>
         <div class="col-md-3" role="complementary">
-          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
-            <ul class="nav bs-docs-sidenav">
-              <li>
-                <a href="#h1-write-in-front">写在最前</a>
-                <a href="#h1-gpio">GPIO</a>
-                <ul class="nav">
-                  <li><a href="#h2-gpio_intro">GPIO Intro</a></li>
-                  <li><a href="#h2-exti">EXTI外部中断</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#h1-usart">USART</a>
-                <ul class="nav">
-                  <li><a href="#h2-usart_intro">USART Intro</a></li>
-                  <li><a href="#h2-printf">USART Intro</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#h1-tim">TIM</a>
-                <ul class="nav">
-                  <li><a href="#h2-u5B9Au65F6u529Fu80FD">定时功能</a></li>
-                  <li><a href="#h2-pwm">PWM输出比较</a></li>
-                  <li><a href="#h2-pwm_read">PWM输入捕获</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#h1-adc">ADC</a>
-              </li>
-              <li>
-                <a href="#h1-iic">IIC</a>
-              </li>
-              <li>
-                <a href="#h1-wwdg">WWDG</a>
-              </li>
-            </ul>         
-            <a class="back-to-top" href="#top">
-              返回顶部
-            </a>
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top" id="autoMenu">
+                     
+            
           </nav>
         </div>
       </div>
@@ -100,11 +65,32 @@
   <script src="../../lib/jquery.flowchart.min.js"></script>
 
   <script src="../../js/editormd.js"></script>
+  <script src="../../js/autoMenu.js"></script>
   <script type="text/javascript">
-      $(function() {
+    function GetQueryString(name)
+    {
+         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+         var r = window.location.search.substr(1).match(reg);
+         if(r!=null)return  unescape(r[2]); return null;
+    }
+    function getAutoMenu()
+    {
+      $('#autoMenu').autoMenu();
+    }
+    
+      function ShowMarkdown(callback){
+        var content = GetQueryString("content");
+          if(content == null)
+          {
+            content = "index.md";
+          }
+          else 
+          {
+            content = content+".md";
+          }
           var testEditormdView, testEditormdView2;
           
-          $.get("content.md", function(markdown) {
+          $.get(content, function(markdown) {
               
       testEditormdView = editormd.markdownToHTML("test-editormd-view", {
                   markdown        : markdown ,//+ "\r\n" + $("#append-test").text(),
@@ -121,6 +107,8 @@
                   tex             : true,  // 默认不解析
                   flowChart       : true,  // 默认不解析
                   sequenceDiagram : true,  // 默认不解析
+                  
+                  
               });
               
               //console.log("返回一个 jQuery 实例 =>", testEditormdView);
@@ -129,16 +117,12 @@
               //console.log(testEditormdView.getMarkdown());
               
               //alert(testEditormdView.getMarkdown());
-          });
-              
-          testEditormdView2 = editormd.markdownToHTML("test-editormd-view2", {
-              htmlDecode      : "style,script,iframe",  // you can filter tags decode
-              emoji           : true,
-              taskList        : true,
-              tex             : true,  // 默认不解析
-              flowChart       : true,  // 默认不解析
-              sequenceDiagram : true,  // 默认不解析
-          });
+              callback();
+          });          
+      }
+      $(function() {
+          ShowMarkdown(getAutoMenu);
+          
       });
   </script>
 </html>
