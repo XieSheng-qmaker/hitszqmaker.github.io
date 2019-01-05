@@ -53,7 +53,6 @@
   <script src = "../../js/jquery.min.js"></script>
   <script src = "../../js/bootstrap.min.js"></script>
   <script src = "../../js/count.js"></script>
-  <script src = "../../js/docs.min.js"></script>
   
   <script src="../../lib/marked.min.js"></script>
   <script src="../../lib/prettify.min.js"></script>
@@ -94,8 +93,8 @@
               
       testEditormdView = editormd.markdownToHTML("test-editormd-view", {
                   markdown        : markdown ,//+ "\r\n" + $("#append-test").text(),
-                  //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
-                  htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                  htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
+                  //htmlDecode      : "style,script,iframe,sub,sup|on*",  // you can filter tags decode
                   //toc             : false,
                   //tocm            : true,    // Using [TOCM]
                   //tocContainer    : "#custom-toc-container", // 自定义 ToC 容器层
@@ -125,4 +124,5 @@
           
       });
   </script>
+  <script src = "../../js/docs.min.js"></script>
 </html>
