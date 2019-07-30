@@ -7,7 +7,9 @@
     <link rel="icon" href="imgs/Qmaker.jpg">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|PT+Serif:700" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/scrollreveal.min.js"></script>
+	<script src="js/scrollreveal.min.js"></script>
+	<link href="https://vjs.zencdn.net/7.6.0/video-js.css" rel="stylesheet">
+	<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 </head>
 <body class="is-boxed has-animations">
 <div class="body-wrap boxed-container">
@@ -31,8 +33,15 @@
 				<div class="hero-inner">
 					<h1 class="hero-title h2-mobile mt-0 is-revealing">青年创客俱乐部</h1>
 					<p class="hero-paragraph is-revealing">做你想做，玩你想玩</p>
-					<p class="hero-cta is-revealing"><a class="button button-secondary button-shadow" href="#">Get started now</a></p>
+					<p class="hero-cta is-revealing"><a class="button button-secondary button-shadow" href="#">活动详情</a></p>
 					<div class="hero-media">
+						<video id='my-video' class='video-js hero-media' controls preload='auto' width='100%' poster='video/video-post.jpg' data-setup='{}'>
+							<source src='video/V4.1.mp4' type='video/mp4'>
+							<p class='vjs-no-js'>
+							To view this video please enable JavaScript, and consider upgrading to a web browser that
+							<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+							</p>
+						</video>
 					</div>
 				</div>
 			</div>
@@ -64,63 +73,46 @@
 		<section class="features section text-center">
 			<div class="container">
 				<div class="features-inner section-inner has-top-divider">
-					<h2 class="section-title mt-0">Product features</h2>
+					<h2 class="section-title mt-0">特色活动</h2>
 					<div class="features-wrap">
 						<div class="feature is-revealing">
 							<div class="feature-inner">
 								<div class="feature-icon">
-									<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-										<g fill="none" fill-rule="evenodd">
-											<path fill="#84E482" d="M48 16v32H16z"/>
-											<path fill="#0EB3CE" d="M0 0h32v32H0z"/>
-										</g>
-									</svg>
+									<img style="height: 48px;width:48px" src="imgs/RoboMaster.ico">
 								</div>
-								<h4 class="feature-title h3-mobile">Lorem Ipsum</h4>
+								<h4 class="feature-title h3-mobile">RoboMaster</h4>
 								<p class="text-sm">often arouses curiosity due to its resemblance to classical latin</p>
 							</div>
 						</div>
 						<div class="feature is-revealing">
 							<div class="feature-inner">
 								<div class="feature-icon">
-									<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-										<g fill="none" fill-rule="evenodd">
-											<path fill="#84E482" d="M48 16v32H16z"/>
-											<path fill="#0EB3CE" d="M0 0v32h32z"/>
-											<circle fill="#02C6A4" cx="29" cy="9" r="4"/>
-										</g>
+									<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+										<path d="M18.752853 17.145173h468.42368l-0.018773 468.425387H18.773333V17.145173h-0.02048z m0 0" fill="#F25022" p-id="8099"></path>
+										<path d="M534.99904 17.145173h468.421973c0 156.141227 0.022187 312.282453-0.02048 468.425387H535.038293c-0.059733-156.161707-0.039253-312.28416-0.039253-468.425387z m0 0" fill="#80BA01" p-id="8100"></path>
+										<path d="M18.752853 533.352107c156.141227 0.058027 312.282453-0.018773 468.42368 0.058026V1001.796267H18.752853V533.352107z m0 0" fill="#02A4EF" p-id="8101"></path>
+										<path d="M535.017813 533.410133c156.12416-0.058027 312.2432-0.018773 468.38272-0.018773V1001.813333H534.99904c0.018773-156.163413-0.02048-312.280747 0.018773-468.4032z m0 0" fill="#FFB902" p-id="8102"></path>
 									</svg>
 								</div>
-								<h4 class="feature-title h3-mobile">Lorem Ipsum</h4>
+								<h4 class="feature-title h3-mobile">微软俱乐部</h4>
 								<p class="text-sm">often arouses curiosity due to its resemblance to classical latin</p>
 							</div>
 						</div>
 						<div class="feature is-revealing">
 							<div class="feature-inner">
 								<div class="feature-icon">
-									<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-										<g fill="none" fill-rule="evenodd">
-											<path fill="#0EB3CE" d="M0 0h32v32H0z"/>
-											<path fill="#84E482" d="M16 16h32L16 48z"/>
-										</g>
-									</svg>
+									<img style="height: 48px;width:48px" src="imgs/讲堂选中.svg">
 								</div>
-								<h4 class="feature-title h3-mobile">Lorem Ipsum</h4>
+								<h4 class="feature-title h3-mobile">青年创新讲堂</h4>
 								<p class="text-sm">often arouses curiosity due to its resemblance to classical latin</p>
 							</div>
 						</div>
 						<div class="feature is-revealing">
 							<div class="feature-inner">
 								<div class="feature-icon">
-									<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-										<g fill="none" fill-rule="evenodd">
-											<path d="M32 40H0c0-8.837 7.163-16 16-16s16 7.163 16 16z" fill="#84E482" style="mix-blend-mode:multiply"/>
-											<path fill="#03C5A4" d="M12 8h8v8h-8z"/>
-											<path fill="#0EB3CE" d="M32 0h16v48H32z"/>
-										</g>
-									</svg>
+									<img style="height: 48px;width:48px" src="imgs/run.svg">
 								</div>
-								<h4 class="feature-title h3-mobile">Lorem Ipsum</h4>
+								<h4 class="feature-title h3-mobile">创客马拉松</h4>
 								<p class="text-sm">often arouses curiosity due to its resemblance to classical latin</p>
 							</div>
 						</div>
@@ -140,29 +132,10 @@
 					</div>
 					<div class="feature-extended">
 						<div class="feature-extended-image is-revealing">
-							<svg width="480" height="360" viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg">
-								<defs>
-									<filter x="-500%" y="-500%" width="1000%" height="1000%" filterUnits="objectBoundingBox" id="dropshadow-1">
-										<feOffset dy="16" in="SourceAlpha" result="shadowOffsetOuter"/>
-										<feGaussianBlur stdDeviation="24" in="shadowOffsetOuter" result="shadowBlurOuter"/>
-										<feColorMatrix values="0 0 0 0 0.12 0 0 0 0 0.17 0 0 0 0 0.21 0 0 0 0.2 0" in="shadowBlurOuter"/>
-									</filter>
-								</defs>
-								<path fill="#F6F8FA" d="M0 220V0h200zM480 140v220H280z"/>
-								<path fill="#FFF" d="M40 50h400v260H40z" style="mix-blend-mode:multiply;filter:url(#dropshadow-1)"/>
-								<path fill="#FFF" d="M40 50h400v260H40z"/>
-								<path fill="#FFF" d="M103 176h80v160h-80zM320 24h88v88h-88z" style="mix-blend-mode:multiply;filter:url(#dropshadow-1)"/>
-								<path fill="#FFF" d="M103 176h80v160h-80zM320 24h88v88h-88z"/>
-								<path fill="#FFF" d="M230.97 198l16.971 16.971-16.97 16.97L214 214.972z" style="mix-blend-mode:multiply;filter:url(#dropshadow-1)"/>
-								<path fill="#02C6A4" d="M230.97 198l16.971 16.971-16.97 16.97L214 214.972z"/>
-								<path fill="#FFF" d="M203 121H103v100z" style="mix-blend-mode:multiply;filter:url(#dropshadow-1)"/>
-								<path fill="#84E482" d="M203 121H103v100z"/>
-								<circle fill="#FFF" cx="288" cy="166" r="32" style="mix-blend-mode:multiply;filter:url(#dropshadow-1)"/>
-								<circle fill="#0EB3CE" cx="288" cy="166" r="32" style="mix-blend-mode:multiply"/>
-							</svg>
+							<img src="imgs/RM.jpg">
 						</div>
 						<div class="feature-extended-body">
-							<h3 class="mt-0">Discover</h3>
+							<h3 class="mt-0">RoboMaster</h3>
 							<p>Where text is visible, people tend to focus on the textual content rather than upon overall presentation</p>
 						</div>
 					</div>
@@ -229,44 +202,40 @@
 		<section class="pricing section">
 			<div class="container">
 				<div class="pricing-inner section-inner has-top-divider">
-					<h2 class="section-title mt-0 text-center">联系我们</h2>
+					<h2 class="section-title mt-0 text-center">关注我们</h2>
 					<div class="pricing-tables-wrap">
 						<div class="pricing-table is-revealing">
 							<div class="pricing-table-inner">
 								<div class="pricing-table-main">
 									<div class="pricing-table-header">
-										<div class="pricing-table-title mt-12 mb-16 text-secondary">Lorem ipsum</div>
-										<div class="pricing-table-price mb-24 pb-32"><span class="pricing-table-price-currency h3">$</span><span class="pricing-table-price-amount h1">29</span></div>
+										<div class="pricing-table-title mt-12 mb-16 text-secondary">联系方式</div>
 									</div>
 									<ul class="pricing-table-features list-reset text-xs mb-56">
 										<li>
 											<span class="list-icon">
-												<svg width="16" height="12" xmlns="http://www.w3.org/2000/svg">
-													<path d="M14.3.3L5 9.6 1.7 6.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4l4 4c.2.2.4.3.7.3.3 0 .5-.1.7-.3l10-10c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0z" fill="#00C6A7" fill-rule="nonzero"/>
+												<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+													<path d="M0 512A512 512 0 1 0 512 0 512 512 0 0 0 0 512z" fill="#00A2B8" p-id="8988" data-spm-anchor-id="a313x.7781069.0.i34" class=""></path>
+													<path d="M506.794667 547.783111l283.676444-236.344889a24.888889 24.888889 0 0 0-4.522667-0.910222H227.669333a24.490667 24.490667 0 0 0-4.494222 0.910222l283.648 236.344889z m304.554666-211.911111a23.779556 23.779556 0 0 0-1.536-7.566222l-201.102222 167.623111 201.386667 201.443555a24.632889 24.632889 0 0 0 1.223111-6.172444V335.872z m-607.544889-7.566222a24.576 24.576 0 0 0-1.564444 7.566222v355.299556a25.344 25.344 0 0 0 1.251556 6.200888l201.472-201.443555z" fill="#ffffff" p-id="8989" data-spm-anchor-id="a313x.7781069.0.i36" class=""></path>
+													<path d="M589.112889 512.256l-74.211556 61.809778a12.430222 12.430222 0 0 1-8.106666 2.844444 12.544 12.544 0 0 1-8.135111-2.844444l-74.126223-61.781334-203.036444 203.036445a23.921778 23.921778 0 0 0 6.144 1.251555h558.336a24.177778 24.177778 0 0 0 6.229333-1.251555z" fill="#ffffff" p-id="8990" data-spm-anchor-id="a313x.7781069.0.i35" class=""></path>
 												</svg>
 											</span>
-											<span>Sed do eiusmod tempor cesa.</span>
+											<span>qmaker@hitszqmaker.club</span>
 										</li>
 										<li>
 											<span class="list-icon">
-												<svg width="16" height="12" xmlns="http://www.w3.org/2000/svg">
-													<path d="M14.3.3L5 9.6 1.7 6.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4l4 4c.2.2.4.3.7.3.3 0 .5-.1.7-.3l10-10c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0z" fill="#00C6A7" fill-rule="nonzero"/>
-												</svg>
+												<img src="imgs/qq.svg">
 											</span>
-											<span>Sed do eiusmod tempor cesa.</span>
+											<span>3106723089</span>
 										</li>
 										<li>
 											<span class="list-icon">
-												<svg width="16" height="12" xmlns="http://www.w3.org/2000/svg">
-													<path d="M14.3.3L5 9.6 1.7 6.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4l4 4c.2.2.4.3.7.3.3 0 .5-.1.7-.3l10-10c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0z" fill="#00C6A7" fill-rule="nonzero"/>
+												<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"width="16" height="16">
+													<path d="M1003.008 865.6896c-213.0944-8.4992-423.7312-94.1056-586.4448-256.8192-163.2256-163.2256-248.832-374.5792-256.9216-588.288-22.1184-2.7648-45.2608 4.1984-62.1568 21.0944L57.344 81.8176c-44.032 44.032-61.8496 107.8272-47.104 168.448 37.376 153.6 110.1824 300.3392 218.3168 427.3152l119.296 119.296c125.952 107.2128 271.2576 179.712 423.5264 217.3952 60.6208 15.0528 124.7232-2.8672 168.96-47.104l41.3696-41.3696c16.384-16.2816 23.4496-38.6048 21.2992-60.1088z" fill="#00A2B8" p-id="9967"></path><path d="M245.0432 421.5808L61.8496 77.312l57.5488-57.5488c20.2752-20.2752 53.4528-20.2752 73.728 0l190.0544 190.0544c20.2752 20.2752 20.2752 53.4528 0 73.728L245.0432 421.5808zM601.7024 778.3424l344.3712 183.0912 57.5488-57.5488c20.2752-20.2752 20.2752-53.4528 0-73.728L813.6704 640.1024c-20.2752-20.2752-53.4528-20.2752-73.728 0l-138.24 138.24z" fill="#00A2B8" p-id="9968"></path>
 												</svg>
 											</span>
-											<span>Sed do eiusmod tempor cesa.</span>
+											<span>陈先生：(+86)13613090571</span>
 										</li>
 									</ul>
-								</div>
-								<div class="pricing-table-cta">
-									<a class="button button-secondary button-block" href="#">Get started now</a>
 								</div>
 							</div>
 						</div>
@@ -274,46 +243,11 @@
 							<div class="pricing-table-inner">
 								<div class="pricing-table-main">
 									<div class="pricing-table-header">
-										<div class="pricing-table-title mt-12 mb-16 text-primary">Lorem ipsum</div>
-										<div class="pricing-table-price mb-24 pb-32"><span class="pricing-table-price-currency h3">$</span><span class="pricing-table-price-amount h1">129</span></div>
+										<div class="pricing-table-title mt-12 mb-16 text-secondary">微信公众号</div>
 									</div>
-									<ul class="pricing-table-features list-reset text-xs mb-56">
-										<li>
-											<span class="list-icon">
-												<svg width="16" height="12" xmlns="http://www.w3.org/2000/svg">
-													<path d="M14.3.3L5 9.6 1.7 6.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4l4 4c.2.2.4.3.7.3.3 0 .5-.1.7-.3l10-10c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0z" fill="#00A2B8" fill-rule="nonzero"/>
-												</svg>
-											</span>
-											<span>Sed do eiusmod tempor cesa.</span>
-										</li>
-										<li>
-											<span class="list-icon">
-												<svg width="16" height="12" xmlns="http://www.w3.org/2000/svg">
-													<path d="M14.3.3L5 9.6 1.7 6.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4l4 4c.2.2.4.3.7.3.3 0 .5-.1.7-.3l10-10c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0z" fill="#00A2B8" fill-rule="nonzero"/>
-												</svg>
-											</span>
-											<span>Sed do eiusmod tempor cesa.</span>
-										</li>
-										<li>
-											<span class="list-icon">
-												<svg width="16" height="12" xmlns="http://www.w3.org/2000/svg">
-													<path d="M14.3.3L5 9.6 1.7 6.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4l4 4c.2.2.4.3.7.3.3 0 .5-.1.7-.3l10-10c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0z" fill="#00A2B8" fill-rule="nonzero"/>
-												</svg>
-											</span>
-											<span>Sed do eiusmod tempor cesa.</span>
-										</li>
-										<li>
-											<span class="list-icon">
-												<svg width="16" height="12" xmlns="http://www.w3.org/2000/svg">
-													<path d="M14.3.3L5 9.6 1.7 6.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4l4 4c.2.2.4.3.7.3.3 0 .5-.1.7-.3l10-10c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0z" fill="#00A2B8" fill-rule="nonzero"/>
-												</svg>
-											</span>
-											<span>Sed do eiusmod tempor cesa.</span>
-										</li>
-									</ul>
-								</div>
-								<div class="pricing-table-cta">
-									<a class="button button-primary button-block" href="#">Get started now</a>
+									<div style="display: flex;justify-content: center;">
+										<img style="width: 200px;box-shadow: 0 16px 48px #E3E7EB;" src="imgs/QR code.jpg">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -328,10 +262,13 @@
 			<div class="site-footer-inner">
 				<div class="brand footer-brand">
 					<a href="#">
-                        <img src="imgs/qmaker.png" style="height: 32px;width: 32px">
+                        <img src="imgs/qmaker_long.png" style="height: 40px">
 					</a>
 				</div>
 				<ul class="footer-links list-reset">
+					<li>
+						<span>深圳市南山区哈尔滨工业大学（深圳）青年创客俱乐部</span>
+					</li>
 					<li>
 						<span>技术支持：</span><a href="https://imuncle.github.io" target="_blank">imuncle</a>
 					</li>
