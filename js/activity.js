@@ -20,9 +20,7 @@ var activity = function(config) {
     message.prototype = {
         init: function() {
             this.data.created_at = self.utc2localTime(this.data.created_at);
-            //document.getElementById('message-list').innerHTML += '<li class="gitment-comment">' + '<div class="gitment-comment-main"><div>' + this.data.body_html + '</div><div><span>' + this.data.created_at + '</span></div></div></li>';
             document.getElementById('message-list').innerHTML += this.data.body;
-            ScrollReveal().reveal(".feature",{duration:600,distance:"40px",easing:"cubic-bezier(0.5, -0.01, 0, 1.005)",interval:100,origin:"bottom",viewFactor:.5});
         }
     }
 
@@ -55,6 +53,7 @@ var activity = function(config) {
                     document.getElementById("load_message").innerHTML = "";
                 }
                 self.options.page++;
+                ScrollReveal().reveal(".feature",{duration:600,distance:"40px",easing:"cubic-bezier(0.5, -0.01, 0, 1.005)",interval:100,origin:"bottom",viewFactor:.5});
             });
         }
     }
